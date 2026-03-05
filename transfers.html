@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CRSW | Transfers</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --cs-blue: #002a5c;
+      --bg-light: #f3f5f7;
+      --card-bg: #ffffff;
+      --text-dark: #1f2933;
+      --text-muted: #6b7280;
+      --positive: #2e7d32;
+      --negative: #c62828;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: 'Inter', Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+    }
+
+    header {
+      background-color: var(--cs-blue);
+      color: white;
+      padding: 22px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      height: 65px;
+    }
+
+    .user {
+      font-size: 1.1rem;
+      opacity: 4.8;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    a.back-btn {
+      display: inline-block;
+      margin-bottom: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      color: var(--cs-blue);
+      background: #eef3f8;
+      padding: 10px 16px;
+      border-radius: 10px;
+    }
+
+    a.back-btn:hover {
+      background: #e0e9f2;
+    }
+
+    h2 {
+      margin-bottom: 30px;
+    }
+
+    .transactions-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card-bg);
+      border-radius: 16px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+    }
+
+    th,
+    td {
+      padding: 14px 16px;
+      text-align: left;
+      font-size: 1rem;
+    }
+
+    th {
+      background-color: #f9fafb;
+      color: var(--text-muted);
+      font-weight: 600;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    tr:not(:last-child) td {
+      border-bottom: 1px solid #f0f2f4;
+    }
+
+    .amount.pos {
+      color: var(--positive);
+      font-weight: 600;
+    }
+2
+    .amount.neg {
+      color: var(--negative);
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <img src="crsw.png" alt="CRSW Logo" class="logo" />
+    <div class="user">Welcome</div>
+  </header>
+
+  <main>
+    <a href="index.html" class="back-btn">← Back to Overview</a>
+    <h2>Transfers & Maintenance Charges</h2>
+
+    <table class="transactions-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Description</th>
+          <th>Account</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Transfer to Checking 3 months ago -->
+       
+        
+
+        <!-- Transfer to Savings 3 months ago -->
+   
+        
+      <tr>
+          <td>Dec 01, 2025</td>
+          <td>Maintenance Fee</td>
+          <td>Checking</td>
+          <td class="amount neg">− CHF 12.50</td>
+        </tr>
+        
+
+        <!-- Monthly maintenance deduction Checking -->
+        <tr>
+          <td>Nov 01, 2025</td>
+          <td>Maintenance Fee</td>
+          <td>Checking</td>
+          <td class="amount neg">− CHF 12.50</td>
+        </tr>
+        <tr>
+          <td>Oct 01, 2025</td>
+          <td>Maintenance Fee</td>
+          <td>Checking</td>
+          <td class="amount neg">− CHF 12.50</td>
+        </tr>
+        <tr>
+          <td>Sep 01, 2025</td>
+          <td>Maintenance Fee</td>
+          <td>Checking</td>
+          <td class="amount neg">− CHF 12.50</td>
+        </tr>
+
+        <!-- Monthly maintenance deduction Savings -->
+        <tr>
+          <td>Dec 01, 2025</td>
+          <td>Maintenance Fee</td>
+          <td>Savings</td>
+          <td class="amount neg">− CHF 8.00</td>
+        <tr>
+          <td>Nov 01, 2025</td>
+          <td>Maintenance Fee</td>
+          <td>Savings</td>
+          <td class="amount neg">− CHF 8.00</td>
+        </tr>
+        <tr>
+          <td>Oct 01, 2025</td>
+          <td>Maintenance Fee</td>
+          <td>Savings</td>
+          <td class="amount neg">− CHF 8.00</td>
+        </tr>
+        <tr>
+          <td>Sep 01, 2025</td>
+          <td>Maintenance Fee</td>
+          <td>Savings</td>
+          <td class="amount neg">− CHF 8.00</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>

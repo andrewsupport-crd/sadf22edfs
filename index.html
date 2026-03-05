@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Secure Login</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:Inter,sans-serif;
+background:linear-gradient(135deg,#0b1f3a,#1f3f72);
+}
+
+.login-box{
+background:#1f3f72;
+padding:40px;
+border-radius:14px;
+width:340px;
+box-shadow:0 20px 40px rgba(0,0,0,.2);
+text-align:center;
+}
+
+.logo{
+margin-bottom:20px;
+}
+
+.logo img{
+height:48px;
+}
+
+input{
+width:100%;
+padding:12px;
+margin-top:10px;
+border:1px solid #ccc;
+border-radius:6px;
+font-size:14px;
+}
+
+button{
+margin-top:16px;
+width:100%;
+padding:12px;
+border:none;
+border-radius:6px;
+background:#1f5eff;
+color:white;
+font-weight:600;
+cursor:pointer;
+}
+
+.error{
+color:red;
+font-size:13px;
+margin-top:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="login-box">
+
+<div class="logo">
+<img src="crsw.png">
+</div>
+
+<h3>Secure Account Login</h3>
+
+<input id="card" placeholder="Card Number">
+
+<input id="pass" type="password" placeholder="Password">
+
+<button onclick="login()">Login</button>
+
+<div id="error" class="error"></div>
+
+</div>
+
+<script>
+
+function login(){
+
+const card=document.getElementById("card").value.trim();
+const pass=document.getElementById("pass").value;
+
+if(card==="1437 2352 5222 6089" && pass==="Crsw234$77*!!"){
+
+sessionStorage.setItem("loggedIn","true");
+
+window.location.href="dashboard.html";
+
+}else{
+
+document.getElementById("error").innerText="Invalid credentials";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

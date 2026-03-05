@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Account Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--navy:#0b1f3a;
+--blue:#1f5eff;
+--soft:#eef3ff;
+--bg:#f6f8fb;
+--text:#1d2433;
+--muted:#7b8599;
+}
+
+*{
+box-sizing:border-box;
+font-family:Inter,sans-serif;
+}
+
+body{
+margin:0;
+background:var(--bg);
+color:var(--text);
+}
+
+/* NAVBAR */
+
+nav{
+background:var(--navy);
+color:white;
+padding:18px 40px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.logo img{
+height:42px;
+}
+
+.menu{
+display:flex;
+gap:28px;
+}
+
+.menu a{
+color:white;
+text-decoration:none;
+opacity:.85;
+font-size:14px;
+}
+
+/* HERO */
+
+.hero{
+padding:50px 60px;
+background:linear-gradient(135deg,#0b1f3a,#1f3f72);
+color:white;
+}
+
+.hero h1{
+margin:0;
+}
+
+.total-balance{
+font-size:42px;
+font-weight:700;
+margin-top:10px;
+}
+
+/* DASHBOARD */
+
+.dashboard{
+padding:40px 60px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+/* CARD */
+
+.card{
+background:white;
+padding:28px;
+border-radius:18px;
+box-shadow:0 10px 30px rgba(0,0,0,0.07);
+}
+
+.card h3{
+margin-top:0;
+font-size:16px;
+color:var(--muted);
+}
+
+/* ACCOUNT */
+
+.account-balance{
+font-size:28px;
+font-weight:700;
+margin-top:8px;
+}
+
+.account-number{
+color:var(--muted);
+font-size:13px;
+margin-top:4px;
+}
+
+/* BUTTONS */
+
+.buttons{
+margin-top:20px;
+display:flex;
+gap:10px;
+}
+
+button{
+border:none;
+padding:10px 14px;
+border-radius:8px;
+cursor:pointer;
+font-weight:600;
+}
+
+.primary{
+background:var(--blue);
+color:white;
+}
+
+.secondary{
+background:var(--soft);
+color:var(--blue);
+}
+
+/* MODAL */
+
+.modal{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.5);
+align-items:center;
+justify-content:center;
+}
+
+.modal-content{
+background:white;
+padding:30px;
+border-radius:14px;
+width:360px;
+text-align:center;
+}
+
+.modal-content input{
+width:100%;
+padding:8px;
+margin-bottom:10px;
+border:1px solid #d8dde6;
+border-radius:6px;
+}
+
+.modal-content button{
+margin-top:12px;
+background:var(--blue);
+color:white;
+width:100%;
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="logo">
+<img src="crsw.png">
+</div>
+
+<div class="menu">
+<a href="#">Dashboard</a>
+<a href="#" class="modal-trigger">Payments</a>
+<a href="#" class="modal-trigger">Transfers</a>
+<a href="#" class="modal-trigger">Investments</a>
+<a href="#" onclick="logout()">Logout</a>
+</div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<h1>Welcome back</h1>
+<div class="total-balance">CHF 3,094,305.03</div>
+
+</section>
+
+
+<!-- DASHBOARD -->
+
+<section class="dashboard">
+
+
+<!-- CHECKING -->
+
+<div class="card">
+
+<h3>Checking Account</h3>
+
+<div class="account-balance">CHF 2,785,352.00</div>
+<div class="account-number">•••• 4821</div>
+
+<div class="buttons">
+<button class="primary modal-trigger">Transfer</button>
+
+<button class="secondary details-btn"
+data-type="Checking Account"
+data-owner="Harry Chung"
+data-number="•••• 4821">
+Details
+</button>
+</div>
+
+</div>
+
+
+<!-- SAVINGS -->
+
+<div class="card">
+
+<h3>Savings Account</h3>
+
+<div class="account-balance">CHF 274,103.03</div>
+<div class="account-number">•••• 9174</div>
+
+<div class="buttons">
+<button class="primary modal-trigger">Move Funds</button>
+
+<button class="secondary details-btn"
+data-type="Savings Account"
+data-owner="Harry Chung"
+data-number="•••• 9174">
+Details
+</button>
+</div>
+
+</div>
+
+
+<!-- EXTERNAL ACCOUNT -->
+
+<div class="card">
+
+<h3>External Deposit Account</h3>
+
+<div id="externalBalance" class="account-balance">CHF 34,850.00</div>
+
+<div class="account-number">Account : Holly Mielke</div>
+
+<div class="buttons">
+
+<button class="primary wire-btn">
+Transfer Funds
+</button>
+
+<button class="secondary details-btn"
+data-type="External Deposit"
+data-owner="XXXX YYY"
+data-number="CAD Equivalent Account">
+Details
+</button>
+
+</div>
+
+</div>
+
+
+</section>
+
+
+<!-- MODAL -->
+
+<div id="modal" class="modal">
+
+<div class="modal-content">
+
+<h3 id="modalTitle"></h3>
+
+<div id="modalBody"></div>
+
+<button onclick="closeModal()">Close</button>
+
+</div>
+
+</div>
+
+
+<script>
+  
+if(sessionStorage.getItem("loggedIn")!=="true"){
+window.location.href="index.html";
+}
+
+const modal=document.getElementById("modal");
+const title=document.getElementById("modalTitle");
+const body=document.getElementById("modalBody");
+
+function openModal(){
+modal.style.display="flex";
+}
+
+function closeModal(){
+modal.style.display="none";
+}
+
+/* LIMITED ACCESS */
+
+document.querySelectorAll(".modal-trigger").forEach(el=>{
+el.onclick=e=>{
+e.preventDefault();
+
+title.textContent="Account Limited Access";
+
+body.innerHTML=
+"<p>Your account currently has limited access.</p><p><strong>Support:</strong> +44 7520 637897</p>";
+
+openModal();
+};
+});
+
+/* ACCOUNT DETAILS */
+
+document.querySelectorAll(".details-btn").forEach(btn=>{
+btn.onclick=e=>{
+e.preventDefault();
+
+title.textContent="Account Details";
+
+body.innerHTML=`
+
+<p><strong>Account Type:</strong> ${btn.dataset.type}</p>
+<p><strong>Owner:</strong> ${btn.dataset.owner}</p>
+<p><strong>Account Number:</strong> ${btn.dataset.number}</p>
+
+`;
+
+openModal();
+};
+});
+
+/* OPEN WIRE FORM */
+
+document.querySelectorAll(".wire-btn").forEach(btn=>{
+btn.onclick=e=>{
+
+title.textContent="Electronic Funds Transfering";
+
+body.innerHTML=`
+
+<form>
+
+<label>Beneficiary Name</label>
+<input type="text">
+
+<label>Beneficiary Bank Name</label>
+<input type="text">
+
+<label>Account Number</label>
+<input type="text">
+
+<label>Transit Number</label>
+<input type="text">
+
+<label>Institution Number</label>
+<input type="text">
+
+
+<button type="button" onclick="submitWire()">
+Submit Transfer
+</button>
+
+</form>
+
+`;
+
+openModal();
+
+};
+});
+
+
+/* SUBMIT WIRE */
+
+function submitWire(){
+
+document.getElementById("externalBalance").innerText="CHF 0.00";
+
+title.textContent="Transfer Submitted";
+
+body.innerHTML=`
+
+<p><strong>Your transfer request has been submitted.</strong></p>
+
+<p>Funds will be transferred in up to <strong>30 minutes</strong>.</p>
+
+`;
+
+}
+function logout(){
+
+sessionStorage.removeItem("loggedIn");
+
+window.location.href="index.html";
+
+}
+
+</script>
+
+</body>
+</html>

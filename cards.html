@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CRSW | Cards</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --cs-blue:#002a5c;
+  --bg:#f3f5f7;
+  --card:#ffffff;
+  --text:#1f2933;
+  --muted:#6b7280;
+  --danger:#c62828;
+}
+
+body.dark {
+  --bg:#0f172a;
+  --card:#020617;
+  --text:#e5e7eb;
+  --muted:#94a3b8;
+}
+
+* {
+  box-sizing:border-box;
+  font-family:Inter,Arial,sans-serif;
+}
+
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  transition:.3s;
+}
+
+header {
+  background:var(--cs-blue);
+  padding:20px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  color:white;
+}
+
+.logo { height:64px; }
+
+.layout {
+  min-height: calc(100vh - 80px);
+}
+
+aside {
+  background:var(--card);
+  padding:30px 20px;
+  border-right:1px solid #e5e7eb;
+}
+
+aside a {
+  display:block;
+  padding:12px;
+  border-radius:8px;
+  text-decoration:none;
+  color:var(--text);
+  font-weight:500;
+}
+
+aside a.active,
+aside a:hover {
+  background:#eef3f8;
+  color:var(--cs-blue);
+}
+
+main { padding:40px; }
+
+h2 { margin-bottom:10px; }
+
+.disclaimer {
+  background:#fff3cd;
+  color:#92400e;
+  padding:14px 18px;
+  border-radius:10px;
+  margin-bottom:30px;
+  font-weight:600;
+  border-left:6px solid #f59e0b;
+}
+
+body.dark .disclaimer {
+  background:#422006;
+  color:#fde68a;
+}
+
+/* Card layout */
+.card-wrapper {
+  display:grid;
+  grid-template-columns:360px 1fr;
+  gap:40px;
+}
+
+/* Credit card */
+.credit-card {
+  background:linear-gradient(135deg,#002a5c,#004a99);
+  border-radius:18px;
+  padding:28px;
+  height:230px;
+  color:white;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  box-shadow:0 15px 35px rgba(0,0,0,.3);
+}
+
+.card-number {
+  letter-spacing:3px;
+  font-size:1.3rem;
+}
+
+.card-details {
+  display:flex;
+  justify-content:space-between;
+  font-size:.85rem;
+}
+
+/* Controls */
+.controls {
+  margin-top:20px;
+  display:flex;
+  gap:12px;
+}
+
+button {
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.freeze { background:#dc2626; color:white; }
+.unfreeze { background:#16a34a; color:white; }
+.dark-toggle { background:#eef3f8; }
+
+/* Limits */
+.panel {
+  background:var(--card);
+  padding:30px;
+  border-radius:16px;
+  box-shadow:0 10px 28px rgba(0,0,0,.08);
+}
+
+.row {
+  margin-bottom:22px;
+}
+
+.label {
+  display:flex;
+  justify-content:space-between;
+  font-weight:600;
+}
+
+.progress {
+  height:8px;
+  background:#e5e7eb;
+  border-radius:6px;
+  overflow:hidden;
+  margin-top:6px;
+}
+
+.bar {
+  height:100%;
+  background:var(--cs-blue);
+}
+
+/* Wallets */
+.wallets {
+  display:flex;
+  gap:26px;
+  margin-top:10px;
+}
+
+.wallets img {
+  height:34px;
+}
+.back-btn {
+  display:inline-block;
+  margin-bottom:20px;
+  text-decoration:none;
+  font-weight:600;
+  color:var(--cs-blue);
+  background:#eef3f8;
+  padding:10px 16px;
+  border-radius:10px;
+}
+
+.back-btn:hover {
+  background:#e0e9f2;
+}
+
+
+/* CVV */
+.cvv {
+  margin-top:20px;
+}
+
+.cvv span {
+  font-weight:700;
+  letter-spacing:3px;
+}
+
+/* Responsive */
+@media(max-width:900px){
+  .layout{grid-template-columns:1fr}
+  aside{display:none}
+  .card-wrapper{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <img src="crsw.png" class="logo">
+  <div>
+   
+  </div>
+</header>
+
+<div class="layout">
+
+
+<main>
+<a href="index.html" class="back-btn">← Back to Overview</a>
+
+<h2>Your Credit Card</h2>
+
+<div class="disclaimer">
+⚠️ ACCESS LIMITED — PLEASE CONTACT SUPPORT
+</div>
+
+<div class="card-wrapper">
+
+<!-- CARD -->
+<div>
+  <div class="credit-card">
+    <div>CRSW</div>
+    <div class="card-number">•••• •••• •••• 4821</div>
+    <div class="card-details">
+      <div>Alex Müller</div>
+      <div>08/28</div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button id="freezeBtn" class="freeze" onclick="toggleFreeze()">Freeze Card</button>
+  </div>
+</div>
+
+<!-- INFO -->
+<div class="panel">
+
+<div class="row">
+  <div class="label">
+    <span>Credit Limit</span>
+    <span>CHF 25,000</span>
+  </div>
+  <div class="progress"><div class="bar" style="width:100%"></div></div>
+</div>
+
+<div class="row">
+  <div class="label">
+    <span>Daily Purchase Limit</span>
+    <span>CHF 5,000</span>
+  </div>
+  <div class="progress"><div class="bar" style="width:100%"></div></div>
+</div>
+
+<div class="row">
+  <div class="label">
+    <span>ATM Withdrawal</span>
+    <span>CHF 1,500</span>
+  </div>
+  <div class="progress"><div class="bar" style="width:100%"></div></div>
+</div>
+
+<div class="cvv">
+  CVV: <span id="cvv">•••</span>
+  <button onclick="revealCVV()">Reveal</button>
+</div>
+
+<div class="wallets">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg">
+  <img src="google.png">
+</div>
+
+</div>
+</div>
+
+</main>
+</div>
+
+<script>
+let frozen = false;
+
+function toggleFreeze(){
+  frozen = !frozen;
+  const btn = document.getElementById('freezeBtn');
+  btn.textContent = frozen ? 'Unfreeze Card' : 'Freeze Card';
+  btn.className = frozen ? 'unfreeze' : 'freeze';
+}
+
+function revealCVV(){
+  document.getElementById('cvv').textContent = '842';
+}
+
+function toggleDark(){
+  document.body.classList.toggle('dark');
+}
+</script>
+
+</body>
+</html>
